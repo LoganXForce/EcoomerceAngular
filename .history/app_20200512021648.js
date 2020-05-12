@@ -12,9 +12,6 @@ const productosRouter = require('./routes/productos');
 const usuariosRouter = require('./routes/usuarios');
 
 
-//Usuario Router
-app.use('/api/productos', productosRouter);
-app.use('/api/usuarios', usuariosRouter);
 
 app.use(cors({
     origin: "*",

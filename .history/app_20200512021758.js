@@ -13,8 +13,8 @@ const usuariosRouter = require('./routes/usuarios');
 
 
 //Usuario Router
-app.use('/api/productos', productosRouter);
-app.use('/api/usuarios', usuariosRouter);
+app.use()
+
 
 app.use(cors({
     origin: "*",

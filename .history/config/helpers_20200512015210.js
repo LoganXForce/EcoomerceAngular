@@ -9,7 +9,4 @@ let conn = new Mysqli({
         db: 'mega_shop'
 });
 
-let db = conn.emit(false,'');
-module.exports = {
-    database: db
-};
+let db = conn.emit(false,'')

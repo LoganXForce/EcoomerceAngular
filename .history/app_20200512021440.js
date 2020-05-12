@@ -8,13 +8,12 @@ const app = express();
 
 //importar rutas
 
-const productosRouter = require('./routes/productos');
-const usuariosRouter = require('./routes/usuarios');
 
 
-//Usuario Router
-app.use('/api/productos', productosRouter);
-app.use('/api/usuarios', usuariosRouter);
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+
+
 
 app.use(cors({
     origin: "*",

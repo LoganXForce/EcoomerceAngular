@@ -6,10 +6,4 @@ let conn = new Mysqli({
         post: 3306,
         user: 'root',
         pass: '',
-        db: 'mega_shop'
 });
-
-let db = conn.emit(false,'');
-module.exports = {
-    database: db
-};

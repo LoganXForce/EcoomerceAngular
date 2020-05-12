@@ -8,8 +8,3 @@ let conn = new Mysqli({
         pass: '',
         db: 'mega_shop'
 });
-
-let db = conn.emit(false,'');
-module.exports = {
-    database: db
-};
