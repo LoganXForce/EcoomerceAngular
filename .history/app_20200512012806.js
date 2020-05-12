@@ -11,8 +11,7 @@ const app = express();
 
 app.use(cors({
     origin: "*",
-    methods: ['Get', 'Post', 'Patch', 'Delete', 'Put'],
-    allowedHeaders: 'Content-Type, Authorization, Origin, X-Request-With, Accept'
+    methods: ['Get', 'Po']
 }));
 
 app.use(logger('dev'));
