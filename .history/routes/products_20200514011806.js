@@ -10,49 +10,47 @@ router.get('/', function(req, res) {
  //establecer el numero de prodcutos por pagina
   const limit = (req.query.limit != undefined && req.query.limit != 0) ? req.query.limit : 10;
 
-  let startValue;
-  let endValue;
+  let valorInicial;
+  let valorFinal;
 
   if(page > 0){
-    startValue = (page * limit) - limit;     // 0, 10, 20, 30
-    endValue = page * limit;  
+    valorInicial = (page * limit) - limit;
+    valorFinal = page * limit;
   }
   else{
-    startValue = 0;
-    endValue = 10;
+    valorInicial = 0;
+    valorFinal = 10;
   }
 
   database.table('products as p')
-  .join([
-    {
-    table: "categories as c",
+  .join([{
+    table: 'categories as c',
     on: 'c.id = p.cat_id'
   }])
 
   //informacion del producto
-  .withFields(['c.title as category', 
+  .withFields(['c.tite as category', 
     'p.title as name',
     'p.price',
     'p.quantity',
-    'p.description',
     'p.image',
     'p.id'
   ])
 
-  .slice(startValue, endValue)
+  .slice(valorInicial, valorFinal)
   .sort({id: .1})
   .getAll()
   .then(prods => {
     if(prods.length > 0){
       res.status(200).json({
-        cantidad: prods.length,
+        count: prods.length,
         productos: prods
       });
     }else{
-      res.json({message: "Productos no disponibles.."});
+      res.json({message: 'Productos no disponibles..'});
     }
   })
-  .catch(err => console.log(err));
+  
 
 
 

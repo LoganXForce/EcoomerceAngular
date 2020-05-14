@@ -23,8 +23,7 @@ router.get('/', function(req, res) {
   }
 
   database.table('products as p')
-  .join([
-    {
+  .join([{
     table: "categories as c",
     on: 'c.id = p.cat_id'
   }])
@@ -45,14 +44,14 @@ router.get('/', function(req, res) {
   .then(prods => {
     if(prods.length > 0){
       res.status(200).json({
-        cantidad: prods.length,
-        productos: prods
+        count: prods.length,
+        products: prods
       });
     }else{
       res.json({message: "Productos no disponibles.."});
     }
   })
-  .catch(err => console.log(err));
+  .catch(err = console.log(err));
 
 
 

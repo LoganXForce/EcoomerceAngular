@@ -24,38 +24,33 @@ router.get('/', function(req, res) {
 
   database.table('products as p')
   .join([
-    {
-    table: "categories as c",
-    on: 'c.id = p.cat_id'
-  }])
-
-  //informacion del producto
-  .withFields(['c.title as category', 
-    'p.title as name',
-    'p.price',
-    'p.quantity',
-    'p.description',
-    'p.image',
-    'p.id'
+      {
+          table: "categories as c",
+          on: `c.id = p.cat_id`
+      }
   ])
-
+  .withFields(['c.title as category',
+      'p.title as name',
+      'p.price',
+      'p.quantity',
+      'p.description',
+      'p.image',
+      'p.id'
+  ])
   .slice(startValue, endValue)
   .sort({id: .1})
   .getAll()
   .then(prods => {
-    if(prods.length > 0){
-      res.status(200).json({
-        cantidad: prods.length,
-        productos: prods
-      });
-    }else{
-      res.json({message: "Productos no disponibles.."});
-    }
+      if (prods.length > 0) {
+          res.status(200).json({
+              count: prods.length,
+              products: prods
+          });
+      } else {
+          res.json({message: "No products found"});
+      }
   })
   .catch(err => console.log(err));
-
-
-
 });
 
 module.exports = router;

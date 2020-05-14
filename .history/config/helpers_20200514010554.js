@@ -5,7 +5,7 @@ let conn = new Mysqli({
         Host: 'localhost',
         post: 3306,
         user: 'root',
-        passwd: '',
+        pass: '',
         db: 'mega_shop'
 });
 

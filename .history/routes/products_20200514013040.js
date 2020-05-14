@@ -45,8 +45,8 @@ router.get('/', function(req, res) {
   .then(prods => {
     if(prods.length > 0){
       res.status(200).json({
-        cantidad: prods.length,
-        productos: prods
+        count: prods.length,
+        products: prods
       });
     }else{
       res.json({message: "Productos no disponibles.."});
